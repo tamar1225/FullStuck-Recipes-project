@@ -1,0 +1,23 @@
+<div class="container">
+  <h1>Update Recipe</h1>
+  <label>Name</label>
+  <input type="text" name="recipeName" [(ngModel)]="updatedRecipe.recipeName">
+  <br>
+  <label>Difficulty</label>
+  <input type="number" max="5" min="1" name="difficulty" [(ngModel)]="updatedRecipe.difficulty">
+  <br>
+  <label>Image Link</label>
+  <input type="text" name="image" [(ngModel)]="updatedRecipe.image">
+  <br>
+  <label>Ingredients</label>
+  <div *ngFor="let ingredient of  updatedRecipe.ingredients; let i = index; trackBy: trackByIndex">
+    <input type="text" name="ing" [(ngModel)]=" updatedRecipe.ingredients[i]">
+  </div>
+  
+  <label>Instructions</label>
+  <div *ngFor="let instruction of updatedRecipe.instructions; let i = index; trackBy: trackByIndex">
+    <input type="text" name="instruction" [(ngModel)]="updatedRecipe.instructions[i]">
+  </div>
+  <button (click)="updateRecipe()">Save Changes</button>
+  <button (click)="cancel()">Cancel</button>
+</div>

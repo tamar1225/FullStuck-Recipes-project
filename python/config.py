@@ -1,0 +1,1 @@
+con_str = "DRIVER={SQL Server};SERVER=MALIKTAMAR-PC;DATABASE=RecipesWebDB"

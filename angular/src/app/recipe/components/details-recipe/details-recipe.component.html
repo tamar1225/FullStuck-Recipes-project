@@ -1,0 +1,43 @@
+@if (!isEdit) {
+<ng-container *ngIf="recipe">
+    <div class="all">
+        <div>
+            <h1>{{recipe.recipeName}} <img src={{iconHref}} alt=""> <span style="font-size: x-large;"
+                    *ngIf="recipeAuthor"> by {{recipeAuthor.name}}</span></h1>
+            <img src="{{recipe.image}}" alt="{{recipe.recipeName}}" style="width: 500px; margin-left: 150px">
+            <div style="border: 2px solid black; width: 300px; margin-left: 150px; ">
+                <p style="margin-left: 30px;">
+                    <b>Level of Difficulty:</b> {{ getStarRating(recipe.difficulty) }} <b> preparation:</b>
+                    {{recipe.preparation|time}}
+                </p>
+            </div>
+            <div class="recipe-instructions" style="margin-left: 150px;">
+                <h3>ingredient</h3>
+                <hr style="margin-top: 5px; border-bottom: 2px solid black; width: 200px;">
+                <p></p>
+                <ul>
+                    <li *ngFor="let ingredient of recipe.ingredients">
+                        <span>* {{ ingredient }}</span>
+                    </li>
+                </ul>
+                <h3>instructions</h3>
+                <hr style="margin-top: 5px; border-bottom: 2px solid black; width: 250px;">
+                <p></p>
+                <ul>
+                    <li *ngFor="let instruction of recipe.instructions">
+                        <span>- {{ instruction }}</span>
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="isAuthor">
+                <button (click)="deleteRecipe()">Delete</button>
+                <button (click)="this.isEdit=true">edit-recipe</button>
+            </div>
+
+        </div>
+    </div>
+</ng-container>
+}
+@else {
+<app-edit-recipe [recipe]="this.recipe" (onEdit)="isEdit = $event" />
+}

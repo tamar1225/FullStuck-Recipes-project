@@ -1,0 +1,37 @@
+
+<form>
+    <div class="filter-container">
+        <button class="custom-btn btn-3" (click)="navigateToAdd()"><span> add a new recipe</span></button>
+        <div class="example-form-fields">
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>name</mat-label>
+                <input type="text" matInput placeholder="recipe name" name="nameProduct" [(ngModel)]="selectedName">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>preparation</mat-label>
+                <input type="number" matInput placeholder="max preparation" name="time" [(ngModel)]="selectedTime">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="example-full-width">
+                <mat-label>category</mat-label>
+                <mat-select value="null" name="categories" id="allC" [(ngModel)]="selectedCategory">
+                    <mat-option disabled>--category--</mat-option>
+                    <mat-option value="1">main</mat-option>
+                    <mat-option value="2">extras</mat-option>
+                    <mat-option value="3">desserts</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+        <div class="filter-buttons">
+            <button mat-flat-button color="primary" (click)="search()">search</button>
+            <button mat-flat-button color="primary" (click)="cancelSearch()">cancel search</button>
+        </div>
+    </div>
+</form>
+
+<div class="recipe-list">
+    <div class="recipe-item" *ngFor="let CurrentRecipe of filterdList">
+        <app-small-recipe [recipe]="CurrentRecipe"></app-small-recipe>
+    </div>
+</div>
